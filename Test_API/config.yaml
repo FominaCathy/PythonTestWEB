@@ -1,0 +1,8 @@
+wdsl: 'https://speller.yandex.net/services/spellservice?WSDL'
+url_auto: 'https://test-stand.gb.ru/gateway/login'
+username: "AnSmirnova"
+password: "23ab37de1f"
+url_post: "https://test-stand.gb.ru/api/posts"
+title_post: "toy story"
+description_post: "toy story"
+content_post: "toy story"
