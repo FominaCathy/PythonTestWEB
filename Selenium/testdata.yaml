@@ -1,0 +1,8 @@
+address: http://test-stand.gb.ru
+sleep_time: 1
+browser:  chrome
+username: "AnSmirnova"
+password: "23ab37de1f"
+title: "title: Test post. auto"
+description: "description: Test post. auto"
+content: "Content: Test post. auto"
