@@ -1,7 +1,8 @@
+"""модуль с тестами UI сайта """
 import pytest
+import time
 
 from testPage import OperationHelper
-import logging
 import yaml
 
 with open('testdata.yaml') as fy:
@@ -9,7 +10,6 @@ with open('testdata.yaml') as fy:
 
 
 def test_authorize_invalid(browser):
-    logging.info('test: invalide autorization start')
     testpage = OperationHelper(browser)
     testpage.go_to_site()
     testpage.enter_login('test')
@@ -32,11 +32,6 @@ def test_authorize_valid(browser):
 
 def test_add_new_post(browser):
     testpage = OperationHelper(browser)
-    # testpage.go_to_site()
-    # testpage.enter_login(testdata['username'])
-    # testpage.enter_pass(testdata['password'])
-    # testpage.click_login_botton()
-
     testpage.click_new_post_botton()
     testpage.enter_title_new_post(testdata['title'])
     testpage.enter_description_new_post(testdata['description'])
@@ -49,9 +44,9 @@ def test_add_new_post(browser):
 @pytest.mark.contact
 def test_contact_us_open(browser):
     testpage = OperationHelper(browser)
-    testpage.enter_page_contact_us()
+    testpage.click_page_contact()
 
-    assert testpage.enter_page_contact_us() == testdata['Contact_us']
+    assert testpage.get_success_page_contact_us() == testdata['Contact_us']
 
 
 @pytest.mark.contact
@@ -61,6 +56,6 @@ def test_contact_us_alert(browser):
     testpage.enter_contact_us_email(testdata['email'])
     testpage.enter_contact_us_content(testdata['content_CU'])
     testpage.click_button_contact_us()
-    text_alert = testpage.get_text_alert()
-
+    time.sleep(3)
+    text_alert = testpage.get_alert_text()
     assert text_alert == testdata['alert']
